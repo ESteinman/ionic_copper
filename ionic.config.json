@@ -1,0 +1,8 @@
+{
+  "name": "cooper_client",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "pro_id": "b019355b"
+}
