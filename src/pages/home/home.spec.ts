@@ -48,9 +48,11 @@ describe("HomePage", () => {
 
   it("should have user array", () => {
     expect(homepage.user).toEqual({});
-  })
+  });
 
   it('should have calculate function', () => {
       expect(homepage.calculate).toBeTruthy();
-  })
+  });
+
+  it('calculate function ')
 });
