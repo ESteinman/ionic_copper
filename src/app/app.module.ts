@@ -15,6 +15,8 @@ import { RouterModule } from '@angular/router';
 import { Angular2TokenService } from 'angular2-token';
 import { PerformanceDataProvider } from '../providers/performance-data/performance-data';
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     MyApp,
