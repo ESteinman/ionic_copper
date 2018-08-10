@@ -30,7 +30,7 @@ describe ('AppComponent', () => {
                     return new Http(backend, defaultOptions)
                 },
                 deps: [MockBackend, BaseRequestOptions]
-                }
+                },
                 { provide: Platform, useFactory: () => PlatformMock.instance() },
                 { provide: StatusBar, useFactory: () => StatusBarMock.instance() },
                 { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() },
