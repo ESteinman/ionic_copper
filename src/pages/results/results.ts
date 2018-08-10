@@ -8,6 +8,13 @@ import { PerformanceDataProvider } from '../../providers/performance-data/perfor
 })
 export class ResultsPage {
   results = [];
+  labels = [];
+  data = [];
+  doughnutChartType: string = 'doughnut';
+  radarChartType: string = 'radar';
+
+  view: string = 'data';
+  
   constructor(
     private performanceData: PerformanceDataProvider,
     public navCtrl: NavController, 
