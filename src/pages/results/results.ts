@@ -1,24 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ResultsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { PerformanceDataProvider } from '../../providers/performance-data/performance-data';
 
 @Component({
   selector: 'page-results',
   templateUrl: 'results.html',
 })
 export class ResultsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  results = [];
+  constructor(
+    private performanceData: PerformanceDataProvider,
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ResultsPage');
+    this.performanceData
+      .getResults()
+      .subscribe(data => (this.results = data.entries));
   }
 
 }
