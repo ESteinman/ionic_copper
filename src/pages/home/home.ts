@@ -8,8 +8,7 @@ import { PersonProvider } from '../../providers/person/person';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  user: any = {}
+  user: any = {};
   
   constructor(
   public navCtrl: NavController,

@@ -4,10 +4,11 @@ import { IonicModule, Platform, NavController } from "ionic-angular";
 import { StatusBar } from "@ionic-native/status-bar";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { PlatformMock, StatusBarMock, SplashScreenMock, NavControllerMock } from "ionic-mocks";
-import { PersonProvider } from '../../providers/person/person'
+import { PersonProvider } from '../../providers/person/person';
+import { CooperProvider } from '../../providers/cooper/cooper';
 
 describe("HomePage", () => {
-  let homepage;
+  let homepage; 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,7 +21,8 @@ describe("HomePage", () => {
         { provide: StatusBar, useFactory: () => StatusBarMock.instance() },
         { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() },
         { provide: NavController, useFactory: () => NavControllerMock.instance() },
-        { PersonProvider }
+        PersonProvider,
+        CooperProvider
       ]
     }).compileComponents();
   }));
@@ -37,7 +39,7 @@ describe("HomePage", () => {
   });
 
   it('should have user array default values', () => {
-    expect(homepage.user).toEqual({ distance: 1000, age: 20 });
+    expect(homepage.user).toEqual({ distance: 1000, age: 20, gender: 'female' });
   });
 
   it('should have calculate function', () => {
@@ -46,10 +48,6 @@ describe("HomePage", () => {
     homepage.calculate()
 
     expect(homepage.calculate).toHaveBeenCalled(); // check if the function has been called
-  });
-
-  it("should have user array", () => {
-    expect(homepage.user).toEqual({});
   });
 
   it('should have calculate function', () => {

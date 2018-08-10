@@ -23,9 +23,14 @@ describe("CooperProvider", () => {
         expect(cooperProvider.assess(person, 2500)).toEqual('Above average');
     });
 
-    it('assess should return Avefrage', () => {
-        let person = { age: 17, gender: 'male'};
-        expect(cooperProvider.assess(person, 2500)).toEqual('Below average');
+    it('assess should return Average', () => {
+        let person = { age: 17, gender: 'male' };
+        expect(cooperProvider.assess(person, 2500)).toEqual('Average');
+    });
+
+    it('assess should return Belov average', () => {
+         let person = { age: 25, gender: 'male' };
+        expect(cooperProvider.assess(person, 2100)).toEqual('Below average');
     });
 
     it('asess should return Poor', () => {
