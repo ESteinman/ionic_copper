@@ -24,9 +24,17 @@ describe ('AppComponent', () => {
                 IonicModule.forRoot(MyApp)
             ],
             providers: [
+                BaseRequestOptions,
+                MockBackend,
+                { provide: Http, useFactory: (backend, defaultOptions) => {
+                    return new Http(backend, defaultOptions)
+                },
+                deps: [MockBackend, BaseRequestOptions]
+                }
                 { provide: Platform, useFactory: () => PlatformMock.instance() },
                 { provide: StatusBar, useFactory: () => StatusBarMock.instance() },
-                { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() }
+                { provide: SplashScreen, useFactory: () => SplashScreenMock.instance() },
+                Angular2TokenService
             ]
         })
 
@@ -38,4 +46,29 @@ describe ('AppComponent', () => {
         expect(component).toBeTruthy();
         expect(component instanceof MyApp).toEqual(true);
     });
-})
+
+    it('login method', inject([Angular2TokenService, MockBackend], (tokenService, mockBackend) => { 
+
+    mockBackend.connections.subscribe(
+        c => {
+            expect(c.request.getBody()).toEqual(JSON.stringify(signInData));
+            expect(c.request.method).toEqual(RequestMethod.Post);
+            expect(c.request.url).toEqual('https://es-cooper-api.herokuapp.com/api/v1/auth/sign_in');
+        }
+    );
+
+    component.login(signInData);
+    }));
+
+    it('signOut method', inject([Angular2TokenService, MockBackend], (tokenService, mockBackend) => {
+        
+        mockBackend.connections.subscribe(
+            c => {
+                expect(c.request.method).toEqual(RequestMethod.Delete);
+                expect(c.request.url).toEqual('https://es-cooper-api.herokuapp.com/api/v1/auth/sign_out')
+            }
+        );
+
+        component.logout();
+    }));
+});
