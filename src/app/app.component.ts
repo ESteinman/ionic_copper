@@ -4,6 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
+import { Angular2TokenOptions, Angular2TokenService } from 'angular2-token';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,8 +16,17 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-    this.initializeApp();
+  constructor(
+    public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    private _tokenService: Angular2TokenService
+  ) {
+      this._tokenService.init({
+        apiBase: 'https:es-cooper-api.herokuapp.com/api/v1'
+      });
+    
+      this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
