@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ResultsPage } from '../pages/results/results'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +22,7 @@ import { ChartsModule } from 'ng2-charts';
   declarations: [
     MyApp,
     HomePage,
+    ResultsPage
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { ChartsModule } from 'ng2-charts';
   entryComponents: [
     MyApp,
     HomePage,
+    ResultsPage
   ],
   providers: [
     StatusBar,
