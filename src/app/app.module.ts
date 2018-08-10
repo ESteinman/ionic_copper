@@ -27,6 +27,7 @@ import { ChartsModule } from 'ng2-charts';
     IonicModule.forRoot(MyApp),
     HttpModule,
     RouterModule,
+    ChartsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
